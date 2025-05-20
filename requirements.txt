@@ -10,9 +10,6 @@ faiss-cpu
 sentence-transformers
 transformers
 torch
-<<<<<<< HEAD
 pypdf
 tabulate
-=======
 hf_xet
->>>>>>> 17daa1d (New pdf files)
