@@ -1,0 +1,18 @@
+streamlit
+langgraph
+langchain
+langchain-community
+langchain-huggingface
+langchain-groq
+python-pptx
+pandas
+faiss-cpu
+sentence-transformers
+transformers
+torch
+<<<<<<< HEAD
+pypdf
+tabulate
+=======
+hf_xet
+>>>>>>> 17daa1d (New pdf files)
