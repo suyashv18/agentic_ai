@@ -483,7 +483,7 @@ def chatbot_func():
 
 graph = chatbot_func()
 # Streamlit UI
-st.title("Multi-Agent QA System")
+st.title("Multi-Agent System")
 st.write("Ask a question and get answers from specialized agents.")
 query = st.text_input("Enter your question:")
 
