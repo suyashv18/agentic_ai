@@ -284,16 +284,16 @@ def extract_table_data(text):
 def agent_a(state):
     # print("The ML agent is answering...")
     result = agent_a_chain({"question": state["question"]})
-    return {"answer": result["answer"], "agent_type" : "Answer from the Clinical Trial Agent"}
+    return {"answer": result["answer"], "agent_type" : "Clinical Trial Agent"}
 
 def agent_b(state):
     # print("The Medical agent is answering...")
     result = agent_b_chain({"question": state["question"]})
-    return {"answer": result["answer"], "agent_type" : "Answer from the Medical Agent"}
+    return {"answer": result["answer"], "agent_type" : "Medical Agent"}
 
 def agent_c(state):
     result = agent_c_chain({"question": state["question"]})
-    return {"answer": result["answer"], "agent_type" : "Answer from the IP Manual Agent"} 
+    return {"answer": result["answer"], "agent_type" : "IP Manual Agent"} 
 def agent_d(state):
     """
     Finance agent that extracts data from finance PDF, formats it as a table,
@@ -330,7 +330,7 @@ def agent_d(state):
     else:
         print("Response did not contain proper table format")
     
-    return {"answer": answer, "excel": True, "excel_path" : "finance_data.xlsx", "excel_name" : "finance_data.xlsx", "agent_type" : "Answer from the Finance Agent"}
+    return {"answer": answer, "excel": True, "excel_path" : "finance_data.xlsx", "excel_name" : "finance_data.xlsx", "agent_type" : "Finance Agent"}
 
 def agent_e(state):
     result = agent_e_chain({"question": state["question"]})
@@ -340,7 +340,7 @@ def agent_e(state):
     print("Slide Content:", slide_content)
     # create_presentation(slide_content, filename="presentation.pptx")
     parse_slide_content(slide_content)
-    response = {"answer": "The created slide deck is.", "ppt":True, "ppt_file_content":"slide_deck.pptx","filename":"presentation.pptx", "agent_type" : "Answer from the Slide Deck Agent"}
+    response = {"answer": "The created slide deck is.", "ppt":True, "ppt_file_content":"slide_deck.pptx","filename":"presentation.pptx", "agent_type" : "Slide Deck Agent"}
     print("Resp",response)
     return response
 
@@ -375,11 +375,11 @@ def agent_f(state):
     conn = sqlite3.connect('Chinook.db')
     df = pd.read_sql_query(sql_query, conn)
 
-    return {"answer": df.to_markdown(index=False), "agent_type" : "Answer from the SQL Agent"}
+    return {"answer": df.to_markdown(index=False), "agent_type" : "SQL Agent"}
 
 def error_handler_agent(state):
   print("Error handler agent is answering...")
-  return {"answer": "The question seems to be out of context, please ask something else.", "agent_type" : "Answer from the Error Handler Agent"}
+  return {"answer": "The question seems to be out of context, please ask something else.", "agent_type" : "Error Handler Agent"}
 
 
 #This can be cosidered as a knowledge base for the router agent.
@@ -497,7 +497,8 @@ if st.button("Get Answer"):
         agent_type = result.get("agent_type", None)
         if agent_type:
             st.markdown(
-    f"<h3 style='color: {'red'};'>{agent_type}</h3>",
+    f"<h3 style='color: #3A7CA5;'>Answer from the <b style='font-weight: 900;'>{agent_type}</b></h3>",
+    # f"<h3 style='color: #3A7CA5;'>Answer from the <b>{agent_type}</b></h3>",
     unsafe_allow_html=True
 )
 
