@@ -497,7 +497,8 @@ if st.button("Get Answer"):
         agent_type = result.get("agent_type", None)
         if agent_type:
             st.markdown(
-    f"<h3 style='color: #3A7CA5;'>Answer from the <b style='font-weight: 900;'>{agent_type}</b></h3>",
+    f"<h3 style='color: #3A7CA5;'><small>Answer from the </small><b style='font-weight:900;'>{agent_type}</b></h3>",
+    #f"<h3 style='color: #3A7CA5;'>Answer from the <b style='font-weight: 900;'>{agent_type}</b></h3>",
     # f"<h3 style='color: #3A7CA5;'>Answer from the <b>{agent_type}</b></h3>",
     unsafe_allow_html=True
 )
@@ -538,4 +539,4 @@ if st.button("Get Answer"):
                     mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
                 )
             except Exception as e:
-                st.error(f"Could not open Excel at {excel_path}: {e}")
+                st.error(f"Could not open Excel at {excel_path}: {e}") 
